@@ -4,7 +4,7 @@
 * 주의: web.xml 체크하기
 ### 2. git 연동
 * .gitignore 파일 프로젝트 폴더에 저장
-*       ㄴ 내용은 gitignore.io 사이트에서 작성.(windows,eclipse,java,maven 입력)
+   * 내용은 gitignore.io 사이트에서 작성.(windows,eclipse,java,maven 입력)
 
 ### 3. 이클립스에서 git 시작하기(아래 명령어 위주로)
 * git init - 로컬저장소 초기화
