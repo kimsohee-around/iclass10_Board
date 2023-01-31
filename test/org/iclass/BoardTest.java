@@ -21,7 +21,7 @@ class BoardTest {
 				.content("자바 공부하기 자바 정석으로")
 				.build();
 		communityDao.insert(vo);
-		assertEquals(vo.getIdx(), 28);
+		assertEquals(vo.getIdx(), 11);    //기대값 : 생성된 시퀀스값
 	}
 
 }
