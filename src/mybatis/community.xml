@@ -73,6 +73,23 @@
 		WHERE idx = #{idx}
  	</update>
  	
+ 	<select id="maxOf" resultType="int">
+ 		SELECT max(idx) FROM community 
+ 	</select>
+ 	
+ 	<!--  mref 메인글의 댓글목록 가져오기  -->
+ 	<select id="comments" parameterType="int" resultType="org.iclass.vo.CommunityComments">
+ 		SELECT * 
+ 		FROM communityComments 
+ 		WHERE 
+ 			mref=#{mref}
+ 	</select>
+ 	
+ 	<!-- 메인글 목록 가져오기 - 할일 : 한번에(즉 한페이지에) 글 10개씩 가져오도록 변경   -->
+ 	<select id="list" resultType="org.iclass.vo.Community">
+ 		SELECT * 
+ 		FROM community 
+ 	</select>
  </mapper>
  
  

@@ -1,5 +1,5 @@
 -- 다른 기능들 SQL : dao 메소드, mapper XML(community.xml)의 id 이름 동일하게 정해보겠습니다.
--- 참고 count(*) 함수의 SQL문 resultType은 int
+-- 참고 count(*),max() 함수의 SQL문 resultType은 int
 
 -- 전체 글의 갯수 : *count*
 SELECT count(*) FROM community ;	
@@ -9,8 +9,7 @@ SELECT max(idx) FROM communityComments ;
 
 -- 메인글 idx (3번)의 글 : selectByIdx 로 완료했음.
 SELECT * FROM community f WHERE idx=3;
--- *comments*
-SELECT * FROM communityComments c WHERE mref=3;   -- 메인 3번글의 댓글 목록
+
 
 -- *setReadCount*
 UPDATE community 
@@ -28,6 +27,9 @@ WHERE idx = 3;
 
 -- 댓글 idx의 삭제 : 완료헀음.
 DELETE FROM communityComments c WHERE idx = 2;
+
+-- *comments*
+SELECT * FROM communityComments c WHERE mref=3;   -- 메인 3번글의 댓글 목록(리스트)
 
 -- 게시판 글목록은 idx 의 내림차순 그리고, rownum 10개씩 조회
 SELECT * FROM 

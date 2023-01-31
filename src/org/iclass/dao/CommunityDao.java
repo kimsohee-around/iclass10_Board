@@ -1,7 +1,10 @@
 package org.iclass.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.iclass.vo.Community;
+import org.iclass.vo.CommunityComments;
 
 import mybatis.SqlSessionBean;
 
@@ -78,4 +81,27 @@ public class CommunityDao {
 		return result;
 	}
 	
+	//idx 최대값 구하기
+	public int maxOf() {
+		SqlSession session = SqlSessionBean.getSession();
+		int result = session.selectOne("community.maxOf");
+		session.close();
+		return result;
+	}
+	
+	//mref 메인글의 댓글목록 가져오기
+	public List<CommunityComments> comments(int mref){
+		SqlSession mapperSession = SqlSessionBean.getSession();
+		List<CommunityComments> commentList = mapperSession.selectList("community.comments");
+		mapperSession.close();
+		return commentList;
+	}
+	
+	//메인글 목록 가져오기 - 할일 : 한번에(즉 한페이지에) 글 10개씩 가져오도록 변경  
+	public List<Community> list() {
+		SqlSession mapperSession = SqlSessionBean.getSession();
+		List<Community> list = mapperSession.selectList("community.list");
+		mapperSession.close();
+		return list;
+	}
 }

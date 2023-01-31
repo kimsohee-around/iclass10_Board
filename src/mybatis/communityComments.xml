@@ -17,6 +17,10 @@
  			idx=#{idx}
  	</delete>
  	
+ 	 	<select id="maxOf" resultType="int">
+ 		SELECT max(idx) FROM communityComments 
+ 	</select>
+ 	
  </mapper>
  
  
