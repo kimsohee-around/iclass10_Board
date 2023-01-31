@@ -3,7 +3,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.iclass</groupId>
-  <artifactId>iclassBoard</artifactId>
+  <artifactId>iclass10_Board</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <description>첫번째 게시판 연습</description>
@@ -54,5 +54,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api : 로그 라이브러리 -->
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		    <version>1.7.25</version>
+		</dependency>
+				
+		
   </dependencies>
 </project>
