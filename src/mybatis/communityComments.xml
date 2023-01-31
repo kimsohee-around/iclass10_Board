@@ -3,8 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="communityComments">
- 	<insert id="insert" parameterType="org.iclass.vo.CommunityComments" 
- 		keyProperty="idx" keyColumn="idx" useGeneratedKeys="true">
+ 	<insert id="insert" parameterType="org.iclass.vo.CommunityComments">
  		INSERT INTO communityComments
  			(idx,mref,writer,content) 
 		VALUES 

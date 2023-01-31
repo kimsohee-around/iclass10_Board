@@ -18,7 +18,7 @@ public class CommunityComments {
 	private int mref;
 	private String writer;
 	private String content;
-	private Timestamp createAt;
+	private Timestamp createdAt;
 	private String ip;
 	private int heart;
 

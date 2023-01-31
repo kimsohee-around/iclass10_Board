@@ -17,7 +17,7 @@ public class CommunityDao {
 		mapperSession.insert("community.insert",vo);
 		mapperSession.commit();
 		mapperSession.close();
-		return vo.getIdx();
+		return vo.getIdx();			//매퍼xml에서 selectKey 로 시퀀스 값을 vo객체에 저장시킵니다.
 	}
 	
 	public int update(Community vo) {
@@ -42,4 +42,40 @@ public class CommunityDao {
 		mapperSession.close();
 		return vo;
 	}
+	
+	//주요한 기능
+	//전체 글 갯수
+	public int count() {
+		SqlSession mapperSession = SqlSessionBean.getSession();
+		int result = mapperSession.selectOne("community.count");
+		mapperSession.close();
+		return result;
+	}
+	
+	//읽은 메인글 조회수 증가
+	public int setReadCount(int idx) {
+		SqlSession session = SqlSessionBean.getSession();
+		int result = session.update("community.setReadCount", idx);
+		session.commit();
+		session.close();
+		return result;
+	}
+	
+	//mref 메인글의 댓글 갯수
+	public int commentsCount(int mref) {
+		SqlSession session = SqlSessionBean.getSession();
+		int result = session.selectOne("community.commentsCount", mref);
+		session.close();
+		return result;
+	}
+	
+	//메인글의 댓글 갯수 업데이트	
+	public int setCommentCount(int idx) {
+		SqlSession session = SqlSessionBean.getSession();
+		int result = session.update("community.setCommentCount", idx);
+		session.commit();
+		session.close();
+		return result;
+	}
+	
 }
