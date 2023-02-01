@@ -7,9 +7,9 @@
  	<insert id="insert" parameterType="org.iclass.vo.Community" useGeneratedKeys="false" >
  	<!-- 오라클은 idx를 시퀀스를 이용하여 값을 만듭니다. useGeneratedKeys="false"  -->
  		INSERT INTO community
- 			(idx,writer,title,content) 
+ 			(idx,writer,title,content,ip) 
 		VALUES 
-			(community_idx_seq.nextval,#{writer},#{title},#{content})
+			(community_idx_seq.nextval,#{writer},#{title},#{content},#{ip})
 	<!-- insert 후에 증가된 시퀀스값 (현재값) 가져오기 : idx 필드에 저장하기-->	
 		<selectKey keyProperty="idx" resultType="long" order="AFTER">
 			SELECT community_idx_seq.currval 

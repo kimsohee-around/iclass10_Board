@@ -38,7 +38,7 @@
 		 		..<span style="color:orange;font-size: 80%;">(<c:out value="${vo.commentCount }"/>)
 		 		</span></li>
 			<li>
-				<c:out value="${vo.writer }"/>
+				<c:out value="${vo.writer }"/>(<c:out value="${vo.ip }"/>)
 			</li>
 			<li>
 				<c:out value="${vo.readCount }"/>
@@ -65,7 +65,9 @@
 		<a href="${pageContext.request.contextPath}" class="button" >홈</a>
 	</div>
 </div>
+
 <!-- github에 있는 list.jsp 이 뒷부분은 지우세요. -->
+</main>
 </body>
 </html>
 

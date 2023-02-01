@@ -6,7 +6,8 @@
 	<title>우리 북카페</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/css/community.css?v=3">  <!-- 절대경로 -->
-<!-- 상대경로는 ../css/community.css 입니다. request객체의 contextPath를 el로 접근할 때에는 현재 jsp 객체 pageContext 를 사용해야 합니다. -->
+<!-- 상대경로는 ../css/community.css 입니다. 
+request객체의 contextPath를 el로 접근할 때에는 현재 jsp 객체 pageContext 를 사용해야 합니다. -->
 </head>
 <body>
 			<main id="write">
