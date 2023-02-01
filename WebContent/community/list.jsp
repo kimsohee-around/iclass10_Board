@@ -33,7 +33,7 @@
 			<li>
 				<c:out value="${vo.idx }"/>
 			</li>
-			<li><a href="" class="title">
+			<li><a href="read?idx=${vo.idx }" class="title">
 					<c:out value="${vo.title }"/>
 				</a>
 		 		..<span style="color:orange;font-size: 80%;">(<c:out value="${vo.commentCount }"/>)
