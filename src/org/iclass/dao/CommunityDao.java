@@ -92,7 +92,7 @@ public class CommunityDao {
 	//mref 메인글의 댓글목록 가져오기
 	public List<CommunityComments> comments(int mref){
 		SqlSession mapperSession = SqlSessionBean.getSession();
-		List<CommunityComments> commentList = mapperSession.selectList("community.comments");
+		List<CommunityComments> commentList = mapperSession.selectList("community.comments",mref);
 		mapperSession.close();
 		return commentList;
 	}

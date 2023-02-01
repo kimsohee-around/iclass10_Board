@@ -44,8 +44,8 @@
 				<c:out value="${vo.readCount }"/>
 			</li>
 			<li>
-			<!-- vo.createdAt 날짜 패턴을 적용한 결과 문자열을 createdAt 변수로 저장 -->
-			<fmt:formatDate value="${vo.createdAt }" pattern="yyyy-MM-dd" var="wdate"/>
+			<!-- vo.createdAt 날짜 패턴을 적용한 결과 문자열을 createdAt 새로운 변수로 저장 -->
+			<fmt:formatDate value="${vo.createdAt }" pattern="yyyy-MM-dd" var="createdAt"/>
 			<!-- 오늘 작성한 글은 시간으로 표시 -->
 			<c:if test='${createdAt == today}'>
 				<fmt:formatDate value="${vo.createdAt }" type="time"/>
@@ -61,40 +61,11 @@
  	</c:forEach>
 	</ul>
 	<div style="float:right;margin:40px;">
-		<a href="wrtie" class="button" >글쓰기</a>
+		<a href="write" class="button" >글쓰기</a>
 		<a href="${pageContext.request.contextPath}" class="button" >홈</a>
 	</div>
 </div>
-<!-- 페이지 버튼을 클릭하면 url  http://192.168.1.254:8082/jsp2/board/listAction.jsp 은 동일하고 
-	 page 파라미터만 변경됩니다.  이런 경우 앞의 부분 생략하고 ? 부터 작성.
--->
-<div style="width:700px;margin: auto;text-align: center;">
-	전체 글 개수 : <c:out value="${pagelist.totalCount }"/> <br>
-	<a class="pagenum" href="?page=1">&lt;&lt;</a>
-	<a class="pagenum" href="?page=${pagelist.startPage-1 }" 
-			style='<c:if test="${pagelist.startPage==1 }">display:none;</c:if>' >&lt;</a>
-	
-	<c:forEach var="i" begin="${pagelist.startPage }" end="${pagelist.endPage }">
-		<a class="pagenum ieach" href="?page=${i }"><c:out value="${i }"/></a>
-	</c:forEach>
-	
-	<a class="pagenum" href="?page=${pagelist.endPage+1 }"
-			style='<c:if test="${pagelist.endPage==pagelist.totalPage }">display:none;</c:if>'	>&gt;</a>
-	<a class="pagenum" href="?page=${pagelist.totalPage }">&gt;&gt;</a>
-</div>
-</main>
-<script type="text/javascript">
-	const pnums = document.querySelectorAll('.ieach');
-	pnums.forEach(function(item){
-		console.log(item);
-		if(item.innerHTML=='${page}') {
-			item.style.color = 'black';
-			item.style.fontWeight = 'bold';
-		}else{
-			item.style.color = '#37966f';
-		}
-	});
-</script>
+<!-- github에 있는 list.jsp 이 뒷부분은 지우세요. -->
 </body>
 </html>
 
