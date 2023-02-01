@@ -46,11 +46,29 @@
 			</li>
 		</ul>
 	<div style="text-align: center;margin-bottom: 10px;">
-		<a class="button" href="update?idx=">수정</a>  <!-- * idx 파라미터는? -->
+		<a class="button" href="javascript:execute(1)">수정</a>  <!-- 자바스크립트 함수:인자값 1은 수정 -->
 		<!--  예시 : 글 비밀번호 입력하여 삭제. -->
-		<a class="button" href="delete?idx=">삭제</a>  <!-- * idx 파라미터는? -->
+		<a class="button" href="javascript:execute(2)">삭제</a>  <!-- 자바스크립트 함수:인자값 2는 삭제  -->
 		<a class="button" href="list">목록</a>
 	</div>
+	<script type="text/javascript">
+		function execute(f){
+			let url
+			let message
+			if(f===1){
+				message='글 수정하시겠습니까?'
+			}else if(f===2){
+				message='글 삭제하시겠습니까?'
+			}
+			const yn = confirm(message)
+			if(yn) {
+				url = (f===1)? 'update?idx='+${vo.idx} :(f===2)? 'delete?idx='+${vo.idx}:'#'
+				location.href=url
+			}else{
+				alert('취소합니다.')
+			}	
+		}
+	</script>
 	<!-- 메인글 출력 끝 -->
 	
 	<hr>
