@@ -31,7 +31,7 @@ public class CommunityDao {
 		return result;
 	}
 	
-	public int delete(int idx) {
+	public int delete(long idx) {
 		SqlSession mapperSession = SqlSessionBean.getSession();
 		int result = mapperSession.delete("community.delete",idx);
 		mapperSession.commit();
@@ -39,7 +39,7 @@ public class CommunityDao {
 		return result;
 	}
 
-	public Community selectByIdx(int idx) {
+	public Community selectByIdx(long idx) {
 		SqlSession mapperSession = SqlSessionBean.getSession();
 		Community vo = mapperSession.selectOne("community.selectByIdx",idx);
 		mapperSession.close();
@@ -56,7 +56,7 @@ public class CommunityDao {
 	}
 	
 	//읽은 메인글 조회수 증가
-	public int setReadCount(int idx) {
+	public int setReadCount(long idx) {
 		SqlSession session = SqlSessionBean.getSession();
 		int result = session.update("community.setReadCount", idx);
 		session.commit();
@@ -65,7 +65,7 @@ public class CommunityDao {
 	}
 	
 	//mref 메인글의 댓글 갯수
-	public int commentsCount(int mref) {
+	public int commentsCount(long mref) {
 		SqlSession session = SqlSessionBean.getSession();
 		int result = session.selectOne("community.commentsCount", mref);
 		session.close();
@@ -73,7 +73,7 @@ public class CommunityDao {
 	}
 	
 	//메인글의 댓글 갯수 업데이트	
-	public int setCommentCount(int idx) {
+	public int setCommentCount(long idx) {
 		SqlSession session = SqlSessionBean.getSession();
 		int result = session.update("community.setCommentCount", idx);
 		session.commit();
@@ -90,7 +90,7 @@ public class CommunityDao {
 	}
 	
 	//mref 메인글의 댓글목록 가져오기
-	public List<CommunityComments> comments(int mref){
+	public List<CommunityComments> comments(long mref){
 		SqlSession mapperSession = SqlSessionBean.getSession();
 		List<CommunityComments> commentList = mapperSession.selectList("community.comments",mref);
 		mapperSession.close();

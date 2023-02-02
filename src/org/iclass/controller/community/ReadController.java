@@ -18,9 +18,9 @@ public class ReadController implements Controller {
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//지정된 idx 메인글 읽기
 		String temp = request.getParameter("idx");			//메인글 글번호 파라미터로 받기
-		int idx=0;
+		long idx=0;
 		try {
-			idx = Integer.parseInt(temp);
+			idx = Long.parseLong(temp);
 		}catch (NumberFormatException e) {
 			response.sendRedirect("list");
 		}
@@ -29,7 +29,7 @@ public class ReadController implements Controller {
 		Community vo = dao.selectByIdx(idx);
 		request.setAttribute("vo", vo);
 		
-		//idx 메인글의 댓글리스트를 애트리뷰트에 저장하기
+		//idx 메인글의 댓글리스트를 애트리뷰트에 저장하기 해보세요.
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("read.jsp");
