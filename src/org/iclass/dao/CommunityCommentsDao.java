@@ -37,5 +37,13 @@ public class CommunityCommentsDao {
 		return result;
 	}
 
+	//메인글의 댓글 갯수 업데이트	
+	public int setCommentCount(long idx) {
+		SqlSession session = SqlSessionBean.getSession();
+		int result = session.update("community.setCommentCount", idx);
+		session.commit();
+		session.close();
+		return result;
+	}
 	
 }
