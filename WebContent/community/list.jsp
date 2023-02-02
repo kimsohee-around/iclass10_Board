@@ -67,8 +67,44 @@
 	</div>
 </div>
 
-<!-- github에 있는 list.jsp 이 뒷부분은 지우세요. -->
+<!-- github에 있는 list.jsp 이 뒷부분은 지우세요.(X) 페이지번호 표시할 화면 구현합니다.-->
+<!-- 페이지 버튼을 클릭하면  url은  http://localhost:8081/iclass10_Board/community/list 는 동일하고 
+	 page 번호 파라미터만 변경됩니다.  이런 경우 앞의 부분 생략하고 ? 부터 작성.
+-->
+<div style="width:700px;margin: auto;padding: 10px;text-align: center;">
+	전체 글 개수 : <c:out value="${paging.totalCount }"/> <br>
+	<hr>
+	<a class="pagenum" href="?page=1">&lt;&lt;</a>   <!--(1) 첫번째 페이지 1번으로 이동 -->
+	
+	<!--(2) 이 부분이 제일 복잡합니다. 실행하면서 파악해보세요. -->
+	<a class="pagenum" href="?page=${paging.startPage-1 }"      
+			style='<c:if test="${paging.startPage==1 }">display:none;</c:if>' >&lt;</a>
+	
+	<!--(3) 페이지 범위 startPage 부터 endPage 까지 반복 -->
+	<c:forEach var="i" begin="${paging.startPage }" end="${paging.endPage }">
+		<a class="pagenum ieach" href="?page=${i }"><c:out value="${i }"/></a>
+	</c:forEach>
+	
+	<!--(4) 이 부분이 제일 복잡합니다. 실행하면서 파악해보세요. -->
+	<a class="pagenum" href="?page=${paging.endPage+1 }"
+			style='<c:if test="${paging.endPage==paging.totalPage }">display:none;</c:if>'	>&gt;</a>
+			
+	<a class="pagenum" href="?page=${paging.totalPage }">&gt;&gt;</a>  <!--(5) 가장 마지막 페이지로 이동 -->
+</div>
 </main>
+<script type="text/javascript">
+	const pnums = document.querySelectorAll('.ieach');
+	pnums.forEach(function(item){
+		console.log(item);
+		/* item 번호가 현재 페이지 이면 글꼴 스타일을 다르게함. */
+		if(item.innerHTML=='${paging.currentPage}') {    
+			item.style.color = 'black';
+			item.style.fontWeight = 'bold';
+		}else{
+			item.style.color = '#37966f';
+		}
+	});
+</script>
 </body>
 </html>
 
