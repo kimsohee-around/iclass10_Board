@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 	<input type="hidden" name="idx" value="${vo.idx }">
  <table>
  	<tr><th>제목</th>
- 		<td><input type="text" name="title" size="50" value="[수정] ${vo.title }" readonly>
+ 		<td><input type="text" name="title" size="50" value="[수정]${vo.title }" readonly>
  			<!-- readonly : 입력불가 -->
  		</td>
  	</tr>
