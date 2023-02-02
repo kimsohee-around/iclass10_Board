@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-//css와 js도 요청에 대한 응답으로 처리해야 하므로 구별을 위해 확장자 설정
+//css와 js도 요청에 대한 응답으로 처리해야 하므로 web.xml 에서 리소스에 대한 처리 설정
 @WebServlet(urlPatterns = {"/"})		
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,8 +32,8 @@ public class FrontController extends HttpServlet {
 		
 		RequestKeyValue key = new RequestKeyValue(url, method);
 		Controller controller = RequestControllerMapping.getController(key);
-		logger.info("::::::::::{}-{}::::::::::",key,controller.getClass());
 		if(controller != null) { 
+			logger.info("::::::::::{}-{}::::::::::",key,controller.getClass());
 			controller.handle(request, response);
 		}	
 		//else 는 error 페이지로 구현 예정.

@@ -10,11 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.iclass.controller.Controller;
 import org.iclass.dao.CommunityDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ListController implements Controller {
+	private static final Logger logger = LoggerFactory.getLogger(ListController.class);
+
 
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		logger.info(":::::::: 요청 ListController 처리 시작 : { } ::::::::",request.getServletPath());
+
 		//db에서 글목록 가져오기
 		CommunityDao dao = CommunityDao.getInstance();
 		request.setAttribute("list", dao.list());
