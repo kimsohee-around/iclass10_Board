@@ -56,7 +56,7 @@
 		WHERE 
 			idx = #{idx}
  	</update>
- 	<select id="commentsCount" resultType="long">
+ 	<select id="commentsCount" resultType="long" parameterType="long">
  		SELECT count(*) 
  		FROM communityComments 
  		WHERE 

@@ -55,7 +55,7 @@
 		function execute(f){
 			let url
 			let message
-			if(f===1){
+			if(f===1){			//아래 url 변수와 같이 조건삼항연산자로 변경가능
 				message='글 수정하시겠습니까?'
 			}else if(f===2){
 				message='글 삭제하시겠습니까?'

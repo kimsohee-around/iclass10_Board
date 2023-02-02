@@ -18,7 +18,15 @@
 	<input type="hidden" name="idx" value="${vo.idx }">
  <table>
  	<tr><th>제목</th>
- 		<td><input type="text" name="title" size="50" value="[수정]${vo.title }" readonly>
+ 		<td>
+ 			<c:choose>
+ 				<c:when  test="${fn:contains(vo.title,'[수정]') }">
+ 					<input type="text" name="title" size="50" value="${vo.title }" readonly>	
+ 				</c:when>
+ 				<c:otherwise>
+ 					<input type="text" name="title" size="50" value="[수정]${vo.title }" readonly>
+ 				</c:otherwise>
+ 			</c:choose>
  			<!-- readonly : 입력불가 -->
  		</td>
  	</tr>

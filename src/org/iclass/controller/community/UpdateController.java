@@ -31,8 +31,8 @@ public class UpdateController implements Controller {
 		
 		CommunityDao dao = CommunityDao.getInstance();
 		int result = dao.update(vo);
-		if(result==0) {
-			response.sendRedirect("update");
+		if(result==1) {
+			response.sendRedirect("read?idx="+idx);
 		}else {
 			//메인화면으로 이동
 			response.sendRedirect(request.getContextPath());

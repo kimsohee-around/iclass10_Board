@@ -39,3 +39,10 @@ request객체의 contextPath를 el로 접근할 때에는 현재 jsp 객체 page
 			 </main>
 </body>
 </html>
+<!-- 
+	이클립스에 ipv4로 처리되도록 톰캣 설정을 바꿉니다.
+	request 객체로 remoteAddr 받을 때 기본 설정이 ipv6로 출력됩니다.
+	변경방법 : Run Configurations -> 왼쪽 항목에서 Tomcat Server 클릭 -> Arguments 탭에서
+			 ->  VM argument 문자열 맨 마지막에 다음 내용 작성. -Djava.net.preferIPv4Stack=true
+
+ -->
