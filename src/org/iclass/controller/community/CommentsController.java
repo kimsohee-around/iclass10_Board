@@ -24,6 +24,7 @@ public class CommentsController implements Controller {
 		long mref = Long.parseLong(request.getParameter("mref"));   //메인글의 idx 를 댓글테이블 mref 컬럼에 저장해야 함.(댓글추가)
 		logger.info("::::::CommentesController  f={} :::::::",f);
 		
+		String page = request.getParameter("page");         // 현재페이지 번호 전달 - 순서9)
 		// 댓글 작성 추가
 		if(f.equals("1")) {
 			CommunityComments vo =CommunityComments.builder()
@@ -32,13 +33,13 @@ public class CommentsController implements Controller {
 									.content(request.getParameter("content"))
 									.ip(request.getRemoteAddr())
 									.build();
-			if(dao.insert(vo)==1) url="read?idx="+mref;
+			if(dao.insert(vo)==1) url="read?idx="+mref + "&page="+page;   // 현재페이지 번호 전달 - 순서9)
 			else url="list";
 			
 		}else if(f.equals("2")) {	
 		//댓글 삭제 - 해보세요.
 			int idx = Integer.parseInt(request.getParameter("idx"));	//삭제한 댓글idx
-			if(dao.delete(idx)==1) url="read?idx="+mref;
+			if(dao.delete(idx)==1) url="read?idx="+mref + "&page="+page;   // 현재페이지 번호 전달 - 순서9)
 			else url="list";
 		}
 		//댓글 갯수 변경 dao 메소드는 편의상 CommunityCommentsDao 로 옮기기

@@ -78,6 +78,7 @@
 	<input type="hidden" name="mref" value="${vo.idx }">  <!-- 댓글 추가할 메인글의 idx(댓글테이블 mref.고정값)  -->
 	<input type="hidden" name="idx" value="0" >	<!-- 삭제할 댓글의 idx(고정값 아님)는 executeCmt 함수에서 설정  -->
 	<input type="hidden" name="f" value="0">
+	<input type="hidden" name="page" value="${page }">  <!-- 현재페이지 번호 전달 - 순서8) -->
 		<ul>
 			<li>
 				<ul class="row">
