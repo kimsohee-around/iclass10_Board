@@ -37,7 +37,9 @@ public class CommentsController implements Controller {
 			
 		}else if(f.equals("2")) {	
 		//댓글 삭제 - 해보세요.
-		
+			int idx = Integer.parseInt(request.getParameter("idx"));	//삭제한 댓글idx
+			if(dao.delete(idx)==1) url="read?idx="+mref;
+			else url="list";
 		}
 		//댓글 갯수 변경 dao 메소드는 편의상 CommunityCommentsDao 로 옮기기
 		//댓글 갯수 변경  
