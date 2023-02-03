@@ -96,10 +96,6 @@
 <!-- 저장버튼 테스트를 위해 변경 --><c:if test="${sessionScope.user == null }">  <!-- 구현 보류 : 로그인 했을때 -->
 								<button type="button" onclick="executeCmt('1',0)">저장</button>  <!-- 2번째 인자 0은 의미없음. -->
 							</c:if>	
-							<c:if test="${sessionScope.user == null }">  <!-- 구현 보류 : 로그인 했을때 -->
-								<button type="submit">저장</button>
-								<button type="button" onclick="reset_content()">취소</button>
-							</c:if>
 							<c:if test="${sessionScope.user == null }">		<!-- 구현 보류  : 로그인 안했들때 -->
 								<button type="button" onclick="login()">로그인</button>
 							</c:if>
