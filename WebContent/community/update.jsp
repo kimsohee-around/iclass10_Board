@@ -16,6 +16,7 @@
 <hr style="color:white;">
 <form name="frm1" method="post" action="update">
 	<input type="hidden" name="idx" value="${vo.idx }">
+	<input type="hidden" name="page" value="${page}">    <!-- 현재페이지 번호 전달 - 순서5) post 로 전달해야 하므로 hidden type으로 저장 -->
  <table>
  	<tr><th>제목</th>
  		<td>
@@ -49,7 +50,7 @@
  	<td colspan="2" align="center">
 	 	<button type="submit">저장</button>
 	 	<button type="reset">다시쓰기</button>
-	 	<button type="button" onclick="location.href='list'">목록</button>
+	 	<button type="button" onclick="location.href='list?page=${page}'">목록</button>  <!-- 현재페이지 번호 전달 - 순서5) -->
  	</td>
  	</tr>
  </table>

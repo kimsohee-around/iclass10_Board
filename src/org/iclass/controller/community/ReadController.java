@@ -37,7 +37,7 @@ public class ReadController implements Controller {
 		//idx 메인글의 댓글리스트를 애트리뷰트에 저장하기 해보세요.
 		List<CommunityComments> cmtlist = dao.comments(idx);
 		request.setAttribute("cmtlist", cmtlist);
-		
+		request.setAttribute("page", request.getParameter("page"));    //현재페이지 번호 전달 -순서2)
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("read.jsp");
 		dispatcher.forward(request, response);

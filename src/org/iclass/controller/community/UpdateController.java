@@ -21,7 +21,6 @@ public class UpdateController implements Controller {
 		String title=request.getParameter("title");
 		String content=request.getParameter("content");
 		String ip = request.getRemoteAddr();
-		
 		Community vo = Community.builder()
 				.idx(idx)
 				.title(title)
@@ -32,7 +31,7 @@ public class UpdateController implements Controller {
 		CommunityDao dao = CommunityDao.getInstance();
 		int result = dao.update(vo);
 		if(result==1) {
-			response.sendRedirect("read?idx="+idx);
+			response.sendRedirect("read?idx="+idx+"&page="+request.getParameter("page"));   //현재페이지 번호 전달 - 순서6)
 		}else {
 			//메인화면으로 이동
 			response.sendRedirect(request.getContextPath());

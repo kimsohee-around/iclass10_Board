@@ -1,6 +1,7 @@
 package org.iclass.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.iclass.vo.Community;
@@ -72,15 +73,6 @@ public class CommunityDao {
 		return result;
 	}
 	
-	//메인글의 댓글 갯수 업데이트	
-	public int setCommentCount(long idx) {
-		SqlSession session = SqlSessionBean.getSession();
-		int result = session.update("community.setCommentCount", idx);
-		session.commit();
-		session.close();
-		return result;
-	}
-	
 	//idx 최대값 구하기
 	public int maxOf() {
 		SqlSession session = SqlSessionBean.getSession();
@@ -97,10 +89,18 @@ public class CommunityDao {
 		return commentList;
 	}
 	
-	//메인글 목록 가져오기 - 할일 : 한번에(즉 한페이지에) 글 10개씩 가져오도록 변경  
+
 	public List<Community> list() {
 		SqlSession mapperSession = SqlSessionBean.getSession();
 		List<Community> list = mapperSession.selectList("community.list");
+		mapperSession.close();
+		return list;
+	}
+	
+	//메인글 목록 가져오기 - 할일 : 한번에(즉 한페이지에) 글 10개씩 가져오도록 변경  
+	public List<Community> pagelist(Map<String,Integer> map) {
+		SqlSession mapperSession = SqlSessionBean.getSession();
+		List<Community> list = mapperSession.selectList("community.pagelist",map);
 		mapperSession.close();
 		return list;
 	}
