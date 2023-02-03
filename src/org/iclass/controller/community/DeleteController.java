@@ -20,7 +20,7 @@ public class DeleteController implements Controller {
 		long idx = Long.parseLong(request.getParameter("idx"));
 		int result = dao.delete(idx);
 		if(result == 1) {
-			response.sendRedirect("list");
+			response.sendRedirect("list?page="+request.getParameter("page"));   //현재페이지 번호 전달 - 순서7)
 		}else {
 			response.sendRedirect(request.getContextPath());
 		}

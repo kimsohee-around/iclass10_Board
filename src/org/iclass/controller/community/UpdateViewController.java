@@ -10,9 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.iclass.controller.Controller;
 import org.iclass.dao.CommunityDao;
 import org.iclass.vo.Community;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // 요청 매핑 :	mapping.put(new RequestKeyValue("/community/update","GET"), new UpdateViewController() );
 public class UpdateViewController implements Controller {
+	private static final Logger logger = LoggerFactory.getLogger(UpdateViewController.class);
 
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,7 +31,9 @@ public class UpdateViewController implements Controller {
 				
 				CommunityDao dao = CommunityDao.getInstance();
 				Community vo = dao.selectByIdx(idx);
-				request.setAttribute("vo", vo);
+				request.setAttribute("vo", vo);				
+				logger.info(":::::::UpdateViewController page - {} ::::::::::",request.getParameter("page"));
+				request.setAttribute("page",request.getParameter("page") ); 	//현재페이지 번호 전달 - 순서4)
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher("update.jsp");
 				dispatcher.forward(request, response);
