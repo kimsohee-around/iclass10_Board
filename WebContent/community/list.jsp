@@ -33,7 +33,7 @@
 			<li>
 				<c:out value="${vo.idx }"/>
 			</li>
-			<li><a href="read?idx=${vo.idx }" class="title">
+			<li><a href="read?idx=${vo.idx }&page=${paging.currentPage}" class="title">  <!-- 현재페이지 번호 전달 시작 -순서1) -->
 					<c:out value="${vo.title }"/>
 				</a>
 		 		..<span style="color:orange;font-size: 80%;">(<c:out value="${vo.commentCount }"/>)

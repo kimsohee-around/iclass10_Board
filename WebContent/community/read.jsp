@@ -49,7 +49,7 @@
 		<a class="button" href="javascript:execute(1)">수정</a>  <!-- 자바스크립트 함수:인자값 1은 수정 -->
 		<!--  예시 : 글 비밀번호 입력하여 삭제. -->
 		<a class="button" href="javascript:execute(2)">삭제</a>  <!-- 자바스크립트 함수:인자값 2는 삭제  -->
-		<a class="button" href="list">목록</a>
+		<a class="button" href="list?page=${page }">목록</a>   <!-- 현재페이지 번호 전달 - 순서3) -->
 	</div>
 	<script type="text/javascript">
 		function execute(f){
@@ -62,8 +62,8 @@
 			}
 			const yn = confirm(message)
 			if(yn) {
-				url = (f===1)? 'update?idx='+${vo.idx} :(f===2)? 'delete?idx='+${vo.idx}:'#'
-				location.href=url
+				url = (f===1)? 'update?idx='+${vo.idx} :(f===2)? 'delete?idx='+${vo.idx}:'#';
+				location.href=url+'&page='+${page};  /* 현재페이지 번호 전달 - 순서3) */
 			}else{
 				alert('취소합니다.')
 			}	
@@ -92,7 +92,7 @@
 						placeholder="로그인 후에 댓글을 작성하세요." class="input"></textarea>
 					</li>				
 						<li style="align-self: center;margin-bottom: 20px;">
-							<c:if test="${sessionScope.user != null }">  <!-- 구현 보류 : 로그인 했을때 -->
+							<c:if test="${sessionScope.user == null }">  <!-- 구현 보류 : 로그인 했을때 -->
 								<button type="submit">저장</button>
 								<button type="button" onclick="reset_content()">취소</button>
 							</c:if>
