@@ -25,18 +25,23 @@ public class UpdateViewController implements Controller {
 				long idx=0;
 				try {
 					idx = Long.parseLong(temp);
+					CommunityDao dao = CommunityDao.getInstance();
+					Community vo = dao.selectByIdx(idx);
+					
+					
+					request.setAttribute("vo", vo);				
+					logger.info(":::::::UpdateViewController page - {} ::::::::::",request.getParameter("page"));
+					
+					//현재페이지를 read.jsp에서 받아 update.jsp로 전달합니다.
+					request.setAttribute("page",request.getParameter("page") ); 	//현재페이지 번호 전달 - 순서4)
+					
+					RequestDispatcher dispatcher = request.getRequestDispatcher("update.jsp");
+					dispatcher.forward(request, response);
 				}catch (NumberFormatException e) {
 					response.sendRedirect("list");
 				}
 				
-				CommunityDao dao = CommunityDao.getInstance();
-				Community vo = dao.selectByIdx(idx);
-				request.setAttribute("vo", vo);				
-				logger.info(":::::::UpdateViewController page - {} ::::::::::",request.getParameter("page"));
-				request.setAttribute("page",request.getParameter("page") ); 	//현재페이지 번호 전달 - 순서4)
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("update.jsp");
-				dispatcher.forward(request, response);
 
 	}
 

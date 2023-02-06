@@ -33,15 +33,15 @@ public class Paging {
 		this.currentPage= (currentPage < 1)? 1:this.currentPage;
 		
 		//이 부분이 제일 복잡합니다. 현재 페이지 currentPage 를 1,2,3,4,5 ... 등등으로 대입해서 계산해보세요.
-		startNo=(this.currentPage-1)*pageSize+1;
+		startNo=(this.currentPage-1)*pageSize+1;    //글목록 시작행번호(rownum)
 		endNo = startNo + (pageSize-1);
 		
 		//아래 예시값을 대입해 보세요.
 		startPage = (this.currentPage-1)/10*10+1;		 //페이지번호 리스트 10개씩 
-		//현재 페이지가 57 , startPage =51
-		//현재 페이지가 7 , startPage =1
-		//현재 페이지가 156 , startPage =151
-		//현재 페이지가 160 , startPage =151
+		//현재 페이지가 57 (51~60) , startPage =51
+		//현재 페이지가 7 (1~10) , startPage =1
+		//현재 페이지가 156(151~160) , startPage =151
+		//현재 페이지가 160(151~160)  , startPage =151
 		endPage = startPage+9;
 		endPage = endPage > totalPage ? totalPage:endPage;   //totalPage 보다 큰값에 대한 제한.
 	}

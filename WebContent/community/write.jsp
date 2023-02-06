@@ -32,7 +32,7 @@ request객체의 contextPath를 el로 접근할 때에는 현재 jsp 객체 page
 			 	<td style="text-align: center;padding: 10px;" colspan="2">
 			 	<button type="submit">저장</button>
 			 	<button type="reset">다시쓰기</button>
-			 	<button type="button" onclick="location.href='list">목록</button>
+			 	<button type="button" onclick="location.href='list?page=${page}">목록</button>
 			 	</td></tr>
 			 </table>
 			 </form>

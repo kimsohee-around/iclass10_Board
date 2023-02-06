@@ -33,7 +33,7 @@ public class ListController implements Controller {
 		
 		String page=request.getParameter("page");
 		if(page != null) currentPage = Integer.parseInt(page);		//list.jsp 에 page 파라미터를 찾아보세요.
-		int pageSize=20;		//pageSize 를 15 또는 10으로 변경해서 실행해 봅시다.
+		int pageSize=5;		//pageSize 를 15 또는 10으로 변경해서 실행해 봅시다.
 		int totalCount = dao.count();
 		
 		//위의 값들을 이용해서 Paging 객체를 생성하면서 다른 필드값을 계산합니다.

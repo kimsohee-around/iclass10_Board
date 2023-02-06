@@ -16,7 +16,8 @@
 <hr style="color:white;">
 <form name="frm1" method="post" action="update">
 	<input type="hidden" name="idx" value="${vo.idx }">
-	<input type="hidden" name="page" value="${page}">    <!-- 현재페이지 번호 전달 - 순서5) post 로 전달해야 하므로 hidden type으로 저장 -->
+	<input type="hidden" name="page" value="${page}">    
+	<!-- 현재페이지 번호 전달 - 순서5) post 로 전달해야 하므로 hidden type으로 저장 -->
  <table>
  	<tr><th>제목</th>
  		<td>

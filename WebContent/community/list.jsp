@@ -62,10 +62,11 @@
  	</c:forEach>
 	</ul>
 	<div style="float:right;margin:40px;">
-		<a href="write" class="button" >글쓰기</a>
+		<a href="write?page=${paging.currentPage }" class="button" >글쓰기</a>  <!-- 로그인 상태가 아니면 로그인으로 이동으로 변경 -->
 		<a href="${pageContext.request.contextPath}" class="button" >홈</a>
 	</div>
 </div>
+
 
 <!-- github에 있는 list.jsp 이 뒷부분은 지우세요.(X) 페이지번호 표시할 화면 구현합니다.-->
 <!-- 페이지 버튼을 클릭하면  url은  http://localhost:8081/iclass10_Board/community/list 는 동일하고 
@@ -76,7 +77,7 @@
 	<hr>
 	<a class="pagenum" href="?page=1">&lt;&lt;</a>   <!--(1) 첫번째 페이지 1번으로 이동 -->
 	
-	<!--(2) 이 부분이 제일 복잡합니다. 실행하면서 파악해보세요. -->
+	<!--(2)  실행하면서 파악해보세요. --> <!-- 요청은 ListController가 받음.page파라미터 변경됨. -->
 	<a class="pagenum" href="?page=${paging.startPage-1 }"      
 			style='<c:if test="${paging.startPage==1 }">display:none;</c:if>' >&lt;</a>
 	
@@ -85,7 +86,7 @@
 		<a class="pagenum ieach" href="?page=${i }"><c:out value="${i }"/></a>
 	</c:forEach>
 	
-	<!--(4) 이 부분이 제일 복잡합니다. 실행하면서 파악해보세요. -->
+	<!--(4)  실행하면서 파악해보세요. -->
 	<a class="pagenum" href="?page=${paging.endPage+1 }"
 			style='<c:if test="${paging.endPage==paging.totalPage }">display:none;</c:if>'	>&gt;</a>
 			
