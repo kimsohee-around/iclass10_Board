@@ -21,7 +21,8 @@ request객체의 contextPath를 el로 접근할 때에는 현재 jsp 객체 page
 			 	</tr>
 			 	<tr>
 					<th><label>작성자</label></th>
-			 		<td><input type="text" name="writer" size="50" required></td>
+			 		<td><input type="text" name="writer" value="${user.id }" 
+			 		      size="50" readonly></td>
 			 	</tr>
 			 	<tr><th><label>내용</label></th>  <!-- textarea 의 크기 : rows="30" 는 행 크기, cols="80"은 열  크기 -->
 			 		<td><textarea  rows="30" cols="80" name="content" style="resize:none;"  required></textarea>

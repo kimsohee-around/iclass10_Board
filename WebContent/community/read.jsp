@@ -85,7 +85,7 @@
 			<li>
 				<ul class="row">
 					<li>작성자</li>	<!-- 구현 보류 : 로그인한 사용자가 작성할때는 로그인 이메일,닉네임 가져와서 표시 -->			
-					<li><input name="writer" class="input" ></li>	
+					<li><input name="writer" class="input" value="${user.id }" readonly></li>	
 				</ul>
 			</li>
 			<li>
