@@ -39,7 +39,7 @@
 		 		..<span style="color:orange;font-size: 80%;">(<c:out value="${vo.commentCount }"/>)
 		 		</span></li>
 			<li>
-				<c:out value="${vo.writer }"/>(<c:out value="${vo.ip }"/>)
+				<c:out value="${vo.writer }"/><%-- (<c:out value="${vo.ip }"/>) --%>
 			</li>
 			<li>
 				<c:out value="${vo.readCount }"/>
@@ -62,13 +62,24 @@
  	</c:forEach>
 	</ul>
 	<div style="float:right;margin:40px;">
-		<a href="write?page=${paging.currentPage }" class="button" >글쓰기</a>  <!-- 로그인 상태가 아니면 로그인으로 이동으로 변경 -->
+<%-- 		<a href="write?page=${paging.currentPage }" class="button" >글쓰기</a> --%>  
+		<!-- 로그인 상태가 아니면 로그인으로 이동으로 변경 -->
+		<a href="javascript:write()" class="button">글쓰기</a>
 		<a href="${pageContext.request.contextPath}" class="button" >홈</a>
 	</div>
 </div>
+<script type="text/javascript">
+	function write() {
+		let yn
+		if('${user.id}'==''){
+			yn=confirm('글쓰기는 로그인이 필요합니다. 로그인 하시겠습니까?')
+			if(yn) location.href='../login?back=w'  // 로그인 후 글쓰기 url로 redirect 하기 위한 파라미터
+		}else{
+			location.href='write?page=${paging.currentPage }'
+		}
+	}
+</script>
 
-
-<!-- github에 있는 list.jsp 이 뒷부분은 지우세요.(X) 페이지번호 표시할 화면 구현합니다.-->
 <!-- 페이지 버튼을 클릭하면  url은  http://localhost:8081/iclass10_Board/community/list 는 동일하고 
 	 page 번호 파라미터만 변경됩니다.  이런 경우 앞의 부분 생략하고 ? 부터 작성.
 -->

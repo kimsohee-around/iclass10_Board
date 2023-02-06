@@ -12,10 +12,12 @@ import javax.servlet.http.HttpSession;
 import org.iclass.controller.Controller;
 import org.iclass.dao.NewMemberDao;
 import org.iclass.vo.NewMember;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 //new RequestKeyValue("/login", "POST")
 public class LoginActionController implements Controller {
-
+	private static final Logger logger = LoggerFactory.getLogger(LoginActionController.class);
 	@Override
 	public void handle(HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
@@ -29,11 +31,14 @@ public class LoginActionController implements Controller {
 		NewMemberDao dao = NewMemberDao.getInstance();
 		NewMember vo = dao.login(map);
 		
-		String url=null;
+		String url= request.getContextPath();
+		String back = (String) session.getAttribute("back");
+		logger.info("::::::::: LoginActionController back={} ::::::::",back);
+		session.removeAttribute("back");	//back 이름의 애트리뷰트 삭제
 		if(vo != null) {		
 			//로그인 성공
 			session.setAttribute("user",vo);  //핵심.
-			url=request.getContextPath();
+			if(back!=null) url=back;
 		}else {			//로그인 실패
 			url="login?incorrect=y";
 		}
