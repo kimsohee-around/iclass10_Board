@@ -35,6 +35,7 @@ https://mybatis.org/mybatis-3/ko/getting-started.html 참고
   	<!-- 실행할 SQL 쿼리 저장한 파일. mapper파일위치와 파일명 오류나지 않도록 확인!! 테이블컬럼과 자바객체 변수(프로퍼티) 를 바로 매핑. -->
     <mapper resource="mybatis/community.xml"/>
     <mapper resource="mybatis/communityComments.xml"/>
+    <mapper resource="mybatis/newmember.xml"/>
     <!-- 
     resource 속성일 때 파일의 패키지명은 . 아니고 / 기호 사용합니다.
     sql mapper 파일은 여러개 사용될 수 있습니다. -->

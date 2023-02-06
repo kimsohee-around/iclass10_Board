@@ -11,6 +11,9 @@ import org.iclass.controller.community.UpdateController;
 import org.iclass.controller.community.UpdateViewController;
 import org.iclass.controller.community.WriteController;
 import org.iclass.controller.community.WriteViewController;
+import org.iclass.controller.login.LoginActionController;
+import org.iclass.controller.login.LoginViewController;
+import org.iclass.controller.login.LogoutController;
 
 public class RequestControllerMapping {
 	private static final Map<RequestKeyValue,Controller> mapping = new HashMap<>();
@@ -24,9 +27,8 @@ public class RequestControllerMapping {
 		mapping.put(new RequestKeyValue("/community/read", "GET"), new ReadController() );
 		mapping.put(new RequestKeyValue("/community/update","GET"), new UpdateViewController() );
 		mapping.put(new RequestKeyValue("/community/update","POST"), new UpdateController() );
-		mapping.put(new RequestKeyValue("/community/delete","GET"), new DeleteController() );
-		//댓글 작성과 삭제
-		mapping.put(new RequestKeyValue("/community/comments","POST"), new CommentsController() );
+		mapping.put(new RequestKeyValue("/community/delete","GET"), new DeleteController() );		//오류 처리 위해 POST로 변경
+		mapping.put(new RequestKeyValue("/community/comments","POST"), new CommentsController());
 		//회원가입
 		mapping.put(new RequestKeyValue("/member/join","GET"), null);
 		mapping.put(new RequestKeyValue("/member/join","POST"), null);
@@ -34,9 +36,9 @@ public class RequestControllerMapping {
 		mapping.put(new RequestKeyValue("/member/modify","GET"), null);
 		mapping.put(new RequestKeyValue("/member/modify","POST"), null);
 		//로그인
-		mapping.put(new RequestKeyValue("/login", "GET"), null);
-		mapping.put(new RequestKeyValue("/login", "POST"), null);
-		mapping.put(new RequestKeyValue("/logout", "GET"), null);
+		mapping.put(new RequestKeyValue("/login", "GET"), new LoginViewController());
+		mapping.put(new RequestKeyValue("/login", "POST"), new LoginActionController());
+		mapping.put(new RequestKeyValue("/logout", "GET"), new LogoutController());
 	}
 	//url,method 필드를 저장하는 key 를 전달받아 HashMap에서 value(컨트롤러)를 리턴
 	public static Controller getController(RequestKeyValue key) {

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="newmember">
+ 	<select id="listAll" resultType="org.iclass.vo.NewMember">
+ 		SELECT *
+ 		FROM
+ 			new_member
+ 	</select>
+	<select id="login" resultType="org.iclass.vo.NewMember" parameterType="java.util.Map">
+		SELECT * 
+		FROM 
+			new_member
+		WHERE 
+			id=#{id} and password=#{password}
+	</select> 	
+	<update id="test" parameterType="java.util.Map">  <!-- 기존 패스워드를 해쉬값으로 변경하기 위해 사용(테스트용) -->
+		UPDATE new_member
+		SET password=#{hashpassword}
+		WHERE 
+			password=#{oldpassword}
+	</update>
+ </mapper>
+ 
+ 
+ 
+ 
+ 
+ 
