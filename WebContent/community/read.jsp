@@ -46,9 +46,11 @@
 			</li>
 		</ul>
 	<div style="text-align: center;margin-bottom: 10px;">
+	<c:if test="${user.id==vo.writer }">  <!-- session 에 저장된 user애트리뷰트의 id와 작성자의 id 가 같은면 보이기 -->
 		<a class="button" href="javascript:execute(1)">수정</a>  <!-- 자바스크립트 함수:인자값 1은 수정 -->
 		<!--  예시 : 글 비밀번호 입력하여 삭제. -->
 		<a class="button" href="javascript:execute(2)">삭제</a>  <!-- 자바스크립트 함수:인자값 2는 삭제  -->
+	</c:if>
 		<a class="button" href="list?page=${page }">목록</a>   <!-- 현재페이지 번호 전달 - 순서3) -->
 	</div>
 	<script type="text/javascript">
@@ -94,7 +96,7 @@
 						placeholder="로그인 후에 댓글을 작성하세요." class="input"></textarea>
 					</li>				
 						<li style="align-self: center;margin-bottom: 20px;">
-<!-- 저장버튼 테스트를 위해 변경 --><c:if test="${sessionScope.user == null }">  <!-- 구현 보류 : 로그인 했을때 -->
+<!-- 저장버튼 테스트를 위해 변경 --><c:if test="${sessionScope.user != null }">  <!-- 구현 보류 : 로그인 했을때 -->
 								<button type="button" onclick="executeCmt('1',0)">저장</button>  <!-- 2번째 인자 0은 의미없음. -->
 							</c:if>	
 							<c:if test="${sessionScope.user == null }">		<!-- 구현 보류  : 로그인 안했들때 -->
@@ -115,8 +117,10 @@
 				<ul class="crow">
 					<li>${cmt.writer }</li>				
 					<li>${cmt.ip }</li>				
-					<li>${cmt.createdAt }</li>		
+					<li>${cmt.createdAt }</li>	
+				<c:if test="${user.id==cmt.writer }">  <!-- session 에 저장된 user애트리뷰트의 id와 작성자의 id 가 같은면 보이기 -->		
 					<li><a href="javascript:executeCmt('2','${cmt.idx }')">삭제</a></li>				
+				</c:if>	
 				</ul>
 			</li>
 			<li>
