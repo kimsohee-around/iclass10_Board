@@ -40,14 +40,14 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	<!-- 실행 중에 발생하는 (런타임)  Exception 처리할 url -->
-<!--<error-page>
+	<error-page>
     	<exception-type>java.lang.Exception</exception-type>
     	<location>/invalid.html</location>
-    </error-page> -->
+    </error-page> 
 	    
     <!-- 404 오류가 발생할 때 처리할 url -->
-<!--     <error-page>
+    <error-page>
     	<error-code>404</error-code>
     	<location>/invalid.html</location>
-    </error-page> -->  <!-- 오류관련 설정은 모든 디버깅이 끝난 후에 하겠습니다. -->
+    </error-page>   <!-- 오류관련 설정은 모든 디버깅이 끝난 후에 하겠습니다. -->
 </web-app>

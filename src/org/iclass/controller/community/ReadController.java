@@ -32,7 +32,7 @@ public class ReadController implements Controller {
 			dao.setReadCount(idx);
 			
 			Community vo = dao.selectByIdx(idx);
-			
+			if(vo==null) throw new RuntimeException();   //잘못된 파라미터로 vo가 null 일때 런타임예외 발생시키기
 			logger.debug("::::::: vo-{}:::::::",vo);
 			request.setAttribute("vo", vo);
 			
@@ -46,7 +46,7 @@ public class ReadController implements Controller {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("read.jsp");
 			dispatcher.forward(request, response);
 		}catch (NumberFormatException  e) {
-			response.sendRedirect("list");
+			response.sendRedirect("list");			// NumberFormatException  처리
 		}
 	}
 
