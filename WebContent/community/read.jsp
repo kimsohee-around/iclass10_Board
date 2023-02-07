@@ -19,16 +19,16 @@
 			<li>
 				<ul class="row">
 					<li>제목</li>
-					<li>${vo.title}</li>
+					<li><c:out value="${vo.title}"/></li>
 					<li>조회수</li>
-					<li>${vo.readCount}</li>
+					<li><c:out value="${vo.readCount}"/></li>
 				</ul>
 			</li>
 			<li>
 				<ul class="row">
 					<li>작성자</li>
-					<li>${vo.writer}<span
-				style="font-size: 70%; padding-left: 30px;">(${vo.ip})</span></li>
+					<li><c:out value="${vo.writer}"/>
+					<span style="font-size: 70%; padding-left: 30px;">(<c:out value="${vo.ip}"/>)</span></li>
 					<li>작성날짜</li>
 					<li><fmt:formatDate value="${vo.createdAt }" type="both"/></li>
 					<!-- pattern="yyyy-MM-dd HH:mm:ss , type= date,time,both -->
@@ -40,7 +40,7 @@
 					<!-- textarea에 입력한 엔터는 \n db에도 \n으로 저장됩니다.
 					     브라우저 출력은 줄바꿈은 <br> 태그 해결1) pre 태그, 해결  2) \n을 <br>로 대치-->	
 					<li>
-						<pre>${vo.content}</pre>
+						<pre><c:out value="${vo.content}"/></pre>
 					</li>				
 				</ul>
 			</li>
@@ -107,7 +107,7 @@
 			</li>
 			<li>
 					<span>댓글</span>
-					<span>[${vo.commentCount }]</span> <!-- 댓글갯수 -->
+					<span>[<c:out value="${vo.commentCount }" />]</span> <!-- 댓글갯수 -->
 				<hr>
 			</li>
 			
@@ -115,16 +115,16 @@
 			<c:forEach var="cmt" items="${cmtlist}">
 			<li>
 				<ul class="crow">
-					<li>${cmt.writer }</li>				
-					<li>${cmt.ip }</li>				
-					<li>${cmt.createdAt }</li>	
+					<li><c:out value="${cmt.writer }" /></li>				
+					<li><c:out value="${cmt.ip }" /></li>				
+					<li><c:out value="${cmt.createdAt }" /></li>	
 				<c:if test="${user.id==cmt.writer }">  <!-- session 에 저장된 user애트리뷰트의 id와 작성자의 id 가 같은면 보이기 -->		
 					<li><a href="javascript:executeCmt('2','${cmt.idx }')">삭제</a></li>				
 				</c:if>	
 				</ul>
 			</li>
 			<li>
-				<pre class="cmtcontent">${cmt.content }</pre>
+				<pre class="cmtcontent"><c:out value="${cmt.content }" /></pre>
 			</li>
 			</c:forEach>
 		</ul>	
