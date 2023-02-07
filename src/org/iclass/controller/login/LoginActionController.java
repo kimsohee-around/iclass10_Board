@@ -34,11 +34,13 @@ public class LoginActionController implements Controller {
 		String url= request.getContextPath();
 		String back = (String) session.getAttribute("back");
 		logger.info("::::::::: LoginActionController back={} ::::::::",back);
-		session.removeAttribute("back");	//back 이름의 애트리뷰트 삭제
 		if(vo != null) {		
 			//로그인 성공
 			session.setAttribute("user",vo);  //핵심.
-			if(back!=null) url=back;
+			if(back!=null) { 
+				url=back;
+				session.removeAttribute("back");	//back 이름의 애트리뷰트 삭제
+			}	
 		}else {			//로그인 실패
 			url="login?incorrect=y";
 		}
