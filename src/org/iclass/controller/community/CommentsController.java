@@ -17,7 +17,7 @@ public class CommentsController implements Controller {
 	
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");		//항상 맨앞에
+//		request.setCharacterEncoding("UTF-8");		//항상 맨앞에. 주석처리는 필터 적용 확인목적
 		CommunityCommentsDao dao = CommunityCommentsDao.getInstance();
 		String f = request.getParameter("f");
 		String url=null;		//redirect url 변수

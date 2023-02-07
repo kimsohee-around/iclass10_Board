@@ -1,7 +1,6 @@
 package org.iclass.filter;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.Filter;
@@ -13,28 +12,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.iclass.vo.NewMember;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//@WebFilter("/*")
+//@WebFilter(servletNames = { "FrontController" })
 public class SessionFilter implements Filter {
 	private static final Logger logger = LoggerFactory.getLogger(SessionFilter.class);
 
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		List<String> urls = List.of("/member/join","/login","/test");
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) 
+			throws IOException, ServletException {
+		//로그인이 되었을 때 접근할 수 없는 url 입니다.
+		List<String> nosessions = List.of("/member/join","/login","/test");
+		//로그인을 해야 접근할 수 있는 url 입니다.
+		List<String> logins = List.of("/community/update","/community/delete",
+						"/community/comments","/community/write");
+		//List.of 메소드는 java 9 부터 사용합니다. 불변컬렉션(추가/삭제 못하는 리스트) 생성
+		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		logger.info(":::::::: 요청 전 SessionFilter: {} ::::::::",httpRequest.getServletPath());
 		HttpSession session = httpRequest.getSession();
-		String user = (String) session.getAttribute("user");
-		if(urls.contains(httpRequest.getServletPath()) && user != null) {
-			httpResponse.sendRedirect(httpRequest.getContextPath()+"?login=yes");
-			return;
+		NewMember user = (NewMember) session.getAttribute("user");
+//로그인이 되었을 때(user != null ) 접근할 수 없는 url 입니다.   또는  //로그인 안됐을때(user == null) 접근할 수 없는 url 입니다.
+		if(nosessions.contains(httpRequest.getServletPath()) && user != null 
+				|| logins.contains(httpRequest.getServletPath()) && user == null) {
+			//접근이 안되는 경우 컨텍스트 패스로 redirect
+			httpResponse.sendRedirect(httpRequest.getContextPath());
+			return;		//다음 필터 적용하지 않도록 종료
 		}
+		
 		chain.doFilter(request, response);
 		logger.info(":::::::: 요청 후  SessionFilter: {} ::::::::",httpRequest.getServletPath());
 	}
-
-
 
 }
