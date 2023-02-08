@@ -1,0 +1,51 @@
+
+-- 기존 컬럼 변경
+ALTER TABLE BOOK_MEMBER  
+MODIFY (password VARCHAR2(64));
+
+-- 새로운 컬럼 추가
+ALTER TABLE BOOK_MEMBER 
+ADD (nickname varchar2(20) NULL);
+
+ALTER TABLE BOOK_MEMBER 
+ADD (userid varchar2(20) UNIQUE );
+
+-- 필요없는 컬럼 삭제
+ALTER TABLE BOOK_MEMBER 
+DROP COLUMN  nickname;
+
+-- userid 값 저장
+UPDATE BOOK_MEMBER SET userid='honey' WHERE mem_idx=10001;
+UPDATE BOOK_MEMBER SET userid='leesj' WHERE mem_idx=10002;
+UPDATE BOOK_MEMBER SET userid='lucky' WHERE mem_idx=10003;
+UPDATE BOOK_MEMBER SET userid='nagd' WHERE mem_idx=10004;
+UPDATE BOOK_MEMBER SET userid='kangGC' WHERE mem_idx=10005;
+
+-- book_member 추가
+INSERT INTO BOOK_MEMBER VALUES (MEMIDX_SEQ.nextval,'박세리','seri@naver.com','','1234','seri');
+INSERT INTO BOOK_MEMBER VALUES (MEMIDX_SEQ.nextval,'김자바','java@naver.com','','1234','javakim');
+INSERT INTO BOOK_MEMBER VALUES (MEMIDX_SEQ.nextval,'이사나','sana@gmail.com','','1234','sana');
+INSERT INTO BOOK_MEMBER VALUES (MEMIDX_SEQ.nextval,'김땡떙','ddang@daum.net','','1234','ddang');
+
+-- community 테이블 writer 수정(userid 와 참조관계)
+-- 로그인 사용자와 글 작성자(userid값)가 같은 때 글 수정 또는 삭제 가능하도록 하기 위함.
+UPDATE COMMUNITY SET WRITER = 'honey' WHERE WRITER ='김모모';
+UPDATE COMMUNITY SET WRITER = 'lucky' WHERE WRITER ='최사나';
+UPDATE COMMUNITY SET WRITER = 'seri' WHERE WRITER ='박세리';
+UPDATE COMMUNITY SET WRITER = 'ddang' WHERE WRITER ='김땡땡';
+UPDATE COMMUNITY SET WRITER = 'kangGC' WHERE WRITER ='강감찬';
+UPDATE COMMUNITY SET WRITER = 'sana' WHERE WRITER ='이사나';
+UPDATE COMMUNITY SET WRITER = 'javakim' WHERE WRITER ='김자바';
+-- 댓글 테이블
+UPDATE COMMUNITYCOMMENTS SET WRITER = 'javakim' WHERE WRITER ='김모모';
+UPDATE COMMUNITYCOMMENTS  SET WRITER = 'honey' WHERE WRITER ='이하니';
+UPDATE COMMUNITYCOMMENTS SET WRITER = 'lucky' WHERE WRITER ='최사나';
+UPDATE COMMUNITYCOMMENTS SET WRITER = 'seri' WHERE WRITER ='박세리';
+UPDATE COMMUNITYCOMMENTS SET WRITER = 'ddang' WHERE WRITER ='김땡땡';
+UPDATE COMMUNITYCOMMENTS SET WRITER = 'kangGC' WHERE WRITER ='강감찬';
+UPDATE COMMUNITYCOMMENTS SET WRITER = 'sana' WHERE WRITER ='이사나';
+UPDATE COMMUNITYCOMMENTS SET WRITER = 'javakim' WHERE WRITER ='김자바';
+
+-- 로그인
+SELECT * FROM BOOK_MEMBER 
+WHERE userid='' AND PASSWORD =''
