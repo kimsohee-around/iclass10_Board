@@ -57,6 +57,7 @@
 										<li><a href="community/list">커뮤니티</a></li>
 									</ul>
 								</li>
+								<li><a href="book/list">새로나온 책</a></li>
 							<c:if test="${sessionScope.user == null }">		
 								<li><a href="#"><span id="join">회원가입</span></a></li>
 								<li><a href="login">로그인</a></li>

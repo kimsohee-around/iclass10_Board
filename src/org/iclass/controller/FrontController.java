@@ -35,11 +35,8 @@ public class FrontController extends HttpServlet {
 			logger.info("::::::::::{}-{}::::::::::",key,controller.getClass());
 			controller.handle(request, response);
 		}
-		/*
-		 * else { throw new RuntimeException(); }
-		 */
-		
-		//else 는 debuging 완료되면 error 페이지로 구현 예정.
+		else { throw new RuntimeException(); }
+		//else 는 debuging 완료되면 error 페이지로 구현.
 		
 	}
 }
