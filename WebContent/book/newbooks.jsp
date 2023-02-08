@@ -20,6 +20,11 @@
 			<div class="gallery">
 				<div>
 				<a href=""> <img src="/upload/${bo.coverfile }" alt="${bo.title }">
+				<!-- 이미지가 저장된 서버의 파일시스템 경로는 url /upload 로 설정을 해야합니다.
+					 server.xml 에서 하러 갑니다.
+			<Context docBase="d:\iclass1020\upload" path="/upload" reloadable="true"/>
+			</Host>바로위에 작성하기 
+				 -->
 				</a>
 				</div>
 				<p>${bo.title }</p>
