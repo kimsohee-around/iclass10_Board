@@ -35,3 +35,15 @@ div.gallery {
 p {
 	text-align: center;
 }
+a.button {
+    background-color: #37966f;
+    color:white;
+    padding: 7px 25px;
+    text-decoration: none;  /*  밑줄제거  */
+    cursor: pointer;
+    display: inline-block;
+	text-align:center;
+	border-radius: 4px;
+	border:none;
+	margin : 3px;
+}

@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.iclass.controller.Controller;
+import org.iclass.dao.NewBooksDao;
+import org.iclass.vo.NewBooks;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,9 +40,18 @@ public class NewBookSaveController implements Controller {
 		//서버로 업로드된 파일의 파일명
 		String cover = multiRequest.getFilesystemName("coverfile");
 		logger.info("::: 파일명-{} , 책제목-{} , 내용-{} :::",cover,title,summary);
-		
 		//서버의 파일 시스템 D:\\iclass1020\\upload 경로에서 파일이 생겼는지 확인하기
-		//response.sendRedirect("");
+		
+		//dao의 insert 실행하세요.
+		NewBooksDao dao = NewBooksDao.getInstance();
+		String url=null;
+		NewBooks book =  new NewBooks(0, title, summary, null, cover, "admin");
+		if(dao.insert(book)==1) {
+			url="list";
+		}else {
+			url="new";
+		}
+		response.sendRedirect(url);
 	}
 
 }

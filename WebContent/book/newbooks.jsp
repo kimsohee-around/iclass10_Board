@@ -31,11 +31,11 @@
 			</div>
 			</c:forEach>
 
-	<div style="float:right;margin:40px;">
+</div>
+	<div style="float:right;margin:40px;padding-right: 100px;">
 		<a href="new" class="button" >쓰기</a>  
 		<a href="${pageContext.request.contextPath}" class="button" >홈</a>
 	</div>
-</div>
 </main>
 </body>
 </html>
