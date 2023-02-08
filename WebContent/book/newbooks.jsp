@@ -40,6 +40,24 @@
 </body>
 </html>
 <!-- 위지윅 textarea 라이브러리 참고 : https://shxrecord.tistory.com/122 -->
+<!-- 
+			StringBuffer sb = new StringBuffer();
+			//파일 업로드를 여러개 할때는 아래와 같이합니다.
+			@SuppressWarnings("unchecked")
+			Enumeration<String> files = multi_request.getFileNames();	//file 타입 파일명 모두 가져오기
+			while(files.hasMoreElements()) {
+				String f = files.nextElement();			//afile3,afile2,afile1
+				String name= multi_request.getFilesystemName(f);		//업로드된 파일명 가져오기
+				sb.append(name).append(",");		//파일명 여러개를 , 으로 구분해서 한 컬럼에 저장
+			}
+			
+			//여기까지 업로드 파일개수 만큼 반복실행
+			String title= multi_request.getParameter("title"); 
+			vo = new NewBooks(0, title, summary, null, sb.toString(), "admin");
+			adao.insert(vo);    //업로드한 파일을 테이블 컬럼 값으로 저장.
+
+*참고 : db 에서 가져왔을 때는 , 기호로 분리해서 List 또는 배열로 변환하여 사용
+ -->
 
 
 
