@@ -46,7 +46,7 @@
 			@SuppressWarnings("unchecked")
 			Enumeration<String> files = multi_request.getFileNames();	//file 타입 파일명 모두 가져오기
 			while(files.hasMoreElements()) {
-				String f = files.nextElement();			//afile3,afile2,afile1
+				String f = files.nextElement();			
 				String name= multi_request.getFilesystemName(f);		//업로드된 파일명 가져오기
 				sb.append(name).append(",");		//파일명 여러개를 , 으로 구분해서 한 컬럼에 저장
 			}
