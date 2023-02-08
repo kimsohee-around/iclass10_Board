@@ -3,6 +3,9 @@ package org.iclass.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.iclass.controller.book.NewFormController;
+import org.iclass.controller.book.NewBookListController;
+import org.iclass.controller.book.NewBookSaveController;
 import org.iclass.controller.community.CommentsController;
 import org.iclass.controller.community.DeleteController;
 import org.iclass.controller.community.ListController;
@@ -39,6 +42,10 @@ public class RequestControllerMapping {
 		mapping.put(new RequestKeyValue("/login", "GET"), new LoginViewController());
 		mapping.put(new RequestKeyValue("/login", "POST"), new LoginActionController());
 		mapping.put(new RequestKeyValue("/logout", "GET"), new LogoutController());
+		//새로나온책 (파일업로드)
+		mapping.put(new RequestKeyValue("/book/new", "GET"), new NewFormController());
+		mapping.put(new RequestKeyValue("/book/new", "POST"), new NewBookSaveController());
+		mapping.put(new RequestKeyValue("/book/list", "GET"), new NewBookListController());
 	}
 	//url,method 필드를 저장하는 key 를 전달받아 HashMap에서 value(컨트롤러)를 리턴
 	public static Controller getController(RequestKeyValue key) {
