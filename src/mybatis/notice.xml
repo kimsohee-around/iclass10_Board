@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="notice">
+ 	<select id="getList" resultType="org.iclass.vo.Notice" 
+ 			parameterType="org.iclass.vo.Paging" >
+ 		SELECT * FROM 
+			(SELECT rownum r ,f.* from
+				(SELECT * 
+				 FROM notice  
+				<if test="column != null and column != 'createdAt'">
+				 WHERE ${column} LIKE '%' || #{findText} || '%'
+				 </if>
+				  <if test="column != null and column == 'createdAt'">
+				 WHERE TO_CHAR(createdAt,'YYYY-MM-DD') = #{findText}
+				 </if>
+				 ORDER BY idx DESC) f
+		 	)
+		WHERE r BETWEEN #{startNo} AND #{endNo}	
+ 	</select>
+ 	<select id="count" resultType="int" 
+ 			parameterType="java.util.Map" >
+ 		SELECT count(*) 
+		FROM notice  
+		 <if test="column != null and column != 'createdAt'">
+		 WHERE ${column} LIKE '%' || #{findText} || '%'
+		 </if>
+		  <if test="column != null and column == 'createdAt'">
+		 WHERE TO_CHAR(createdAt,'YYYY-MM-DD') = #{findText}
+		 </if>
+ 	</select>
+ 	<select id="getOne" parameterType="int" resultType="org.iclass.vo.Notice">
+ 		SELECT * 
+		FROM notice
+		WHERE idx = #{idx} 
+ 	</select>
+ 	<insert id="insert" parameterType="org.iclass.vo.Notice">
+ 		INSERT INTO notice 
+ 		VALUES (notice_idx_seq.nextval,
+		 		#{title},
+		 		#{content},
+		 		sysdate)
+ 	</insert>
+ 	<update id="update" parameterType="org.iclass.vo.Notice">
+ 		UPDATE notice
+ 		SET title=#{title},
+ 			content=#{content},
+		WHERE idx = #{idx}
+ 	</update>
+ </mapper>
+ 
+ 
+ 
+ 
+ 
+ 

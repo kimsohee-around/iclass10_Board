@@ -17,6 +17,12 @@ import org.iclass.controller.community.WriteViewController;
 import org.iclass.controller.login.LoginActionController;
 import org.iclass.controller.login.LoginViewController;
 import org.iclass.controller.login.LogoutController;
+import org.iclass.controller.notice.NoticeListController;
+import org.iclass.controller.notice.NoticeReadController;
+import org.iclass.controller.notice.NoticeUpdateController;
+import org.iclass.controller.notice.NoticeUpdateSaveController;
+import org.iclass.controller.notice.NoticeWriteController;
+import org.iclass.controller.notice.NoticeWriteSaveController;
 
 public class RequestControllerMapping {
 	private static final Map<RequestKeyValue,Controller> mapping = new HashMap<>();
@@ -46,6 +52,13 @@ public class RequestControllerMapping {
 		mapping.put(new RequestKeyValue("/book/new", "GET"), new NewFormController());
 		mapping.put(new RequestKeyValue("/book/new", "POST"), new NewBookSaveController());
 		mapping.put(new RequestKeyValue("/book/list", "GET"), new NewBookListController());
+		//공지사항(검색기능)
+		mapping.put(new RequestKeyValue("/notice/list", "GET"), new NoticeListController());
+		mapping.put(new RequestKeyValue("/notice/read", "GET"), new NoticeReadController());
+		mapping.put(new RequestKeyValue("/notice/write", "GET"), new NoticeWriteController());
+		mapping.put(new RequestKeyValue("/notice/write", "POST"),new NoticeWriteSaveController());
+		mapping.put(new RequestKeyValue("/notice/update", "GET"), new NoticeUpdateController());
+		mapping.put(new RequestKeyValue("/notice/update", "POST"), new NoticeUpdateSaveController());
 	}
 	//url,method 필드를 저장하는 key 를 전달받아 HashMap에서 value(컨트롤러)를 리턴
 	public static Controller getController(RequestKeyValue key) {
