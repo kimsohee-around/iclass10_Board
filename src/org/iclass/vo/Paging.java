@@ -1,5 +1,7 @@
 package org.iclass.vo;
 
+import java.util.Map;
+
 import lombok.Getter;
 import lombok.ToString;
 
@@ -45,6 +47,22 @@ public class Paging {
 		endPage = startPage+9;
 		endPage = endPage > totalPage ? totalPage:endPage;   //totalPage 보다 큰값에 대한 제한.
 	}
+	
+	//검색 기능 필드 선언과 생성자 추가
+	private String column;
+	private String findText;
+	//검색 기능에서 페이지목록을 만드려면 위 2개의 값으로 총 글 갯수가 구해져야 하므로
+	//2개의 값을 먼저 Map 으로 저장하여 count 를 실행하고
+	//이 count 값을 paging 객체의 다른 필드값 구할 때 사용한다.
+	
+	//map 에 먼저 저장된 데이터를 객체 해당 필드로 또 저장하기 
+	public void setFind(Map<String, String> map) {
+		if(map!=null) {
+			this.column=map.get("column");
+			this.findText=map.get("findText");
+		}
+	}
+	
 }
 
 
