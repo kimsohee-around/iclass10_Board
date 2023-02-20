@@ -29,6 +29,9 @@ public class SessionFilter implements Filter {
 						"/community/comments","/community/write");
 		//List.of 메소드는 java 9 부터 사용합니다. 불변컬렉션(추가/삭제 못하는 리스트) 생성
 		
+		//관리자만 접근하는 url
+		List<String> admins = List.of("/notice/write","/notice/update","/notice/delete","/admin");
+		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		logger.info(":::::::: 요청 전 SessionFilter: {} ::::::::",httpRequest.getServletPath());
@@ -40,6 +43,12 @@ public class SessionFilter implements Filter {
 			//접근이 안되는 경우 컨텍스트 패스로 redirect
 			httpResponse.sendRedirect(httpRequest.getContextPath());
 			return;		//다음 필터 적용하지 않도록 종료
+		}
+		
+		if(admins.contains(httpRequest.getServletPath()) && 
+				(user==null || !user.getId().equals("admin"))) { 		//로그인은 안헀거나 id가 'admin'이 아니면
+			httpResponse.sendRedirect(httpRequest.getContextPath());
+			return;	
 		}
 		
 		chain.doFilter(request, response);
