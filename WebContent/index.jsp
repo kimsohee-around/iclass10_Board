@@ -53,7 +53,7 @@
 									<a href="#">북카페</a>
 									<ul>
 										<li><a href="#">우리동네 소개</a></li>
-										<li><a href="#">이용안내</a></li>
+										<li><a href="notice/list">이용안내</a></li>
 										<li><a href="community/list">커뮤니티</a></li>
 									</ul>
 								</li>
