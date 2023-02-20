@@ -33,7 +33,7 @@ public class NoticeReadController implements Controller {
 			request.setAttribute("vo", vo);
 			
 			//현재페이지를 list.jsp에서 받아서 read.jsp로 전달합니다.-> paging 값들을 세션애트리뷰트에 저장했으므로 주석 처리합니다.
-			//request.setAttribute("page", request.getParameter("page"));    //현재페이지 번호 전달 -순서2)
+			//request.setAttribute("page", request.getParameter("page"));    
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("read.jsp");
 			dispatcher.forward(request, response);

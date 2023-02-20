@@ -50,7 +50,7 @@ public class NoticeListController implements Controller {
 		//list 구할 메소드 실행하고 애트리뷰트 저장합니다.
 		request.setAttribute("list", dao.list(paging));
 		
-		//페이지 목록을 화면구현하기 위한 애트리뷰트를 저장합니다.
+		//페이지 목록을 화면구현하기 위한 애트리뷰트를 저장합니다. - 중요 : 세션 애트리뷰트 입니다.
 		HttpSession session = request.getSession();
 		session.setAttribute("paging", paging);
 		

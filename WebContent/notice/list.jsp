@@ -70,7 +70,7 @@
 			<li>
 				<c:out value="${vo.idx }"/>
 			</li>
-			<li><a href="read?idx=${vo.idx }&page=${paging.currentPage}" class="title">  <!-- 현재페이지 번호 전달 시작 -순서1) -->
+			<li><a href="read?idx=${vo.idx }" class="title">  <!-- 현재페이지 번호 세션에 저장했으므로 파라미터 전달 삭제 -->
 					<c:out value="${vo.title }"/>
 				</a>
 		 	</li>

@@ -36,9 +36,8 @@ public class NoticeUpdateController implements Controller {
 					if(vo==null || !user.getId().equals("admin")) throw new RuntimeException();
 					request.setAttribute("vo", vo);				
 					
-					//현재페이지를 read.jsp에서 받아 update.jsp로 전달합니다.
 					logger.info(":::::::NoticeUpdateController page - {} ::::::::::",request.getParameter("page"));
-					request.setAttribute("page",request.getParameter("page") ); 	//현재페이지 번호 전달 - 순서4)
+					//request.setAttribute("page",request.getParameter("page") ); 	//현재페이지 번호 세션에 저장했으므로 파라미터 전달 삭제
 					
 					RequestDispatcher dispatcher = request.getRequestDispatcher("update.jsp");
 					dispatcher.forward(request, response);

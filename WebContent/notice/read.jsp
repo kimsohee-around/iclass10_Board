@@ -59,7 +59,7 @@
 			let yn=false
 			//f값에 따라 기본 url 설정하기
 			if(f===1 || f===2){
-				let yn = confirm(message)
+				yn = confirm(message)
 				if(yn) 
 					url = (f===1)? 'update?idx=${vo.idx}&' :(f===2)? 'delete?idx=${vo.idx}&':'#';
 			}else if(f===3){
