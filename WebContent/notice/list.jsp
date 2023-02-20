@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice.css?v=3">  <!-- 절대경로 -->
 </head>
 <body>
-<main id="notice">
+<main id="list">
 <h3>이용안내 :: 공지사항</h3>
 <p>우리동네 북카페 입니다.</p>
 <hr style="color:white;">
